@@ -85,11 +85,19 @@ program
 program
   .command('link [address]')
   .description("Link a new device. If address is omitted, press the set button on the desired device.")
-  .option("-r, --responder", "Link as a responder instead of controller")
+  .option("-r, --responder", "Link modem as a responder")
+  .option("-c, --controller", "Link modem as a controller")
   .action(wrapAction(async (address, cmd) => {
     try {
+      let controller = undefined;
+      if (cmd.controller) {
+        controller = true;
+      } else if (cmd.responder) {
+        controller = false;
+      }
+
       const info = await hub.link(address, {
-        controller: !cmd.responder,
+        controller,
         timeout: address ? 3000 : 30000 // 30s if we're waiting to press set button, 3s otherwise
       });
       console.log('Linking complete', info);
