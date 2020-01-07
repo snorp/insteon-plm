@@ -107,6 +107,27 @@ program
   }));
 
 program
+  .command('unlink [address]')
+  .description("Unlink a device. If address is omitted, press the set button on the desired device.")
+  .action(wrapAction(async address => {
+    try {
+      const info = await hub.unlink(address, {
+        timeout: address ? 3000 : 30000 // 30s if we're waiting to press set button, 3s otherwise
+      });
+      console.log('Unlinking complete', info);
+    } catch (e) {
+      console.log('Unlinking failed', e);
+    }
+  }));
+
+program
+  .command('reset')
+  .description("Performs a factory reset on the modem.")
+  .action(wrapAction(async () => {
+    await modem.factoryReset();
+  }));
+
+program
   .command('status <address>')
   .description('Request the current status of a device')
   .action(wrapAction(async address => {
