@@ -705,7 +705,7 @@
   },
   "7": {
     "0": {
-      "name": "IOLinc",
+      "name": "I/O Linc",
       "product": "2450",
       "category": 7,
       "subcategory": 0
@@ -897,7 +897,7 @@
       "subcategory": 1
     },
     "2": {
-      "name": "TriggerLinc",
+      "name": "Open/Close Sensor",
       "product": "2421",
       "category": 16,
       "subcategory": 2
@@ -919,6 +919,12 @@
       "product": "2845-222",
       "category": 16,
       "subcategory": 17
+    },
+    "22": {
+      "name": "Motion Sensor II",
+      "product": "2844-222",
+      "category": 16,
+      "subcategory": 22
     }
   },
   "17": {
