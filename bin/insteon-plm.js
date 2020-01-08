@@ -142,6 +142,19 @@ program
     await messenger.send({ to: address, cmd1: MessageCommands.PING });
   }));
 
+program
+  .command('turnOn <address> [level]')
+  .description('Turn on a device with an optional level, 0-100')
+  .action(wrapAction(async (address, level) => {
+    await hub.turnOn(address, { level: parseInt(level || 100) });
+  }));
+
+program
+  .command('turnOff <address>')
+  .description('Turn off a device')
+  .action(wrapAction(async (address, level) => {
+    await hub.turnOff(address);
+  }));
 
 async function main() {
   try {
