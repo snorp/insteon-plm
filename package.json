@@ -9,8 +9,13 @@
   "scripts": {
     "test": "mocha -r esm",
     "lint": "eslint --fix .",
+    "lint-nofix": "eslint .",
     "docs": "jsdoc -d docs lib"
   },
+  "pre-commit": [
+    "lint-nofix",
+    "test"
+  ],
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
@@ -21,7 +26,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jsdoc": "^3.6.3",
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "bin-protocol": "^3.1.1",
