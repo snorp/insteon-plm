@@ -152,7 +152,7 @@ program
 program
   .command('turnOff <address>')
   .description('Turn off a device')
-  .action(wrapAction(async (address, level) => {
+  .action(wrapAction(async address => {
     await hub.turnOff(address);
   }));
 
