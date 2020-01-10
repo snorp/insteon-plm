@@ -87,6 +87,7 @@ program
   .description("Link a new device. If address is omitted, press the set button on the desired device.")
   .option("-r, --responder", "Link modem as a responder")
   .option("-c, --controller", "Link modem as a controller")
+  .option("-g, --group <number>", "The group number to link")
   .action(wrapAction(async (address, cmd) => {
     try {
       let controller = undefined;
@@ -96,8 +97,13 @@ program
         controller = false;
       }
 
+      let group = undefined;
+      if (cmd.group) {
+        group = parseInt(cmd.group);
+      }
+
       const info = await hub.link(address, {
-        controller,
+        controller, group,
         timeout: address ? 3000 : 30000 // 30s if we're waiting to press set button, 3s otherwise
       });
       console.log('Linking complete', info);
