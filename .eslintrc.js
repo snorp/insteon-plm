@@ -18,6 +18,7 @@ module.exports = {
         "key-spacing": ["error"],
         "keyword-spacing": ["error"],
         "object-curly-spacing": ["error", "always"],
-        "object-curly-newline": ["error"]
+        "object-curly-newline": ["error"],
+        "no-console": "off",
     }
 };
